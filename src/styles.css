@@ -1,0 +1,15 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .menuItem {
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+    margin: 5px 20px 5px 20px;
+  }
+  .menuItem button {
+    float: right;
+  }
+  
