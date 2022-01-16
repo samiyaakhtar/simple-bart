@@ -10,6 +10,7 @@ export default function Bart() {
         });
     }
     const [schedule, setSchedule] = useState([]);
+    const [htmlSchedule, setHtmlSchedule] = useState();
 
     useEffect(() => {
         const intervalId = setInterval(async () => {
@@ -17,7 +18,15 @@ export default function Bart() {
             if (newSchedule != schedule) {
                 setSchedule(newSchedule);
             }
-        }, 3000);
+
+
+
+            fetch("/html").then((value) => {
+                return value.text();
+            }).then((value) => {
+                setHtmlSchedule(value);
+            });
+        }, 5000);
 
         return () => {
             clearInterval(intervalId);
@@ -52,6 +61,9 @@ export default function Bart() {
     console.log(schedules);
 
     return (
-        <Schedule schedules={schedules} />
+        <>
+            <Schedule schedules={schedules} />
+            <div dangerouslySetInnerHTML={{ __html: htmlSchedule }} />
+        </>
     );
 }

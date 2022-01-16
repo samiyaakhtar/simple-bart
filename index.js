@@ -23,6 +23,14 @@ app.get("/bart", (req, response) => {
     });
 });
 
+app.get("/html", (req, response) => {
+    request("https://www.bart.gov/bart/api/rte/WARM/1/1", {json: true}, (err, res, body) => {
+        if (err) { return console.log(err); }
+        console.log(body);
+        response.send(body);
+    });
+});
+
 app.listen(port, () => {
     console.log("listening at " + port);
 });
